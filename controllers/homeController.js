@@ -1,5 +1,6 @@
 // display the home page
 exports.index = function(req, res) {
-    // simple response TODO: change this later
-    res.send("The server has received your request!");
+    // Sends a Bad Request status code since the server 
+    // is expecting a certain request
+    res.status(400).send("Not enough information provided to the server.");
 }
