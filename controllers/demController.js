@@ -9,5 +9,5 @@ exports.retrieveDEM = function(req, res) {
     // TODO: update later when we have this data
     // THis will be used to parse the request
     // to get the right DEM tile
-    res.send("NOT IMPLEMENTED: Still need DEM data");
+    res.send("NOT IMPLEMENTED: Still need DEM data to do processing");
 };
