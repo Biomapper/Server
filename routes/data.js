@@ -32,3 +32,5 @@ router.get("/DEM", DEM_controller.index);
 
 // GET DEM data (depends on HTTP parameters)
 router.get("/DEM/:data", DEM_controller.retrieveDEM);
+
+module.exports = router;
