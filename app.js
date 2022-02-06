@@ -1,9 +1,10 @@
 const express = require('express');
-const app = express()
+const app = express();
 const port = 3000;
 
 // import routes
 const homeRouter = require('./routes/index');
+//TODO const dataRouter = require();
 
 app.use('/', homeRouter);
 
