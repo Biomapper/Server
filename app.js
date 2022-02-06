@@ -4,9 +4,10 @@ const port = 3000;
 
 // import routes
 const homeRouter = require('./routes/index');
-//TODO const dataRouter = require();
+const dataRouter = require('./routes/data');
 
 app.use('/', homeRouter);
+app.use('/data', dataRouter);
 
 // running the server
 app.listen(port, (err) => {

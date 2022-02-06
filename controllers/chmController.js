@@ -2,7 +2,7 @@ exports.index = function(req, res) {
     //TODO: Add a more specific error
     // such as what exactly is missing in the request
     // might have to
-    res.status(400).send("Invalid request for DEM data. \
+    res.status(400).send("Invalid request for CHM data. \
         Please give more information.");
 }
 

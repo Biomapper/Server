@@ -9,5 +9,5 @@ exports.retrieve_ABG = function(req,res) {
     //TODO: update later when we have this data
     // This will be used to parse the request
     // to get the right ABG tile
-    res.send("NOT IMPLEMENTED: Still need ABG data");
+    res.send("NOT IMPLEMENTED: Still need ABG data to do processing");
 };
