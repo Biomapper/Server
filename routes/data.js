@@ -12,7 +12,8 @@ const CHM_controller = require("../controllers/chmController");
 router.get('/CHM', CHM_controller.index);
 
 // GET CHM data (depends on HTTP parameters)
-router.get('/CHM/:data', CHM_controller.retrieve_CHM);
+//router.get('/CHM/:zoom/:x/:y', CHM_controller.retrieve_CHM);
+router.get("/CHM/:zoom/:x/:y", CHM_controller.retrieve_CHM);
 
 
 // ABG Routes ///
