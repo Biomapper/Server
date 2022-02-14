@@ -21,7 +21,13 @@ exports.retrieve_CHM = function(req, res) {
      will need to be updated for modified tiles
      TODO: Come later this will need to be reformatted to fit the file structure that will be on the server
      */
-    let test1 = path.join(__dirname, "..", "CHM",`${req.params.zoom}`,`${req.params.x}`,`${req.params.y}.png`);
+    let test1 = path.join(__dirname, "..", "CHM", `${req.params.zoom}`,`${req.params.x}`,`${req.params.y}.png`);
 
-    res.sendFile(test1)
-};
+    // check to see if file exists
+    if (fs.existsSync(test1)) {
+        res.sendFile(test1);
+    } else {
+        res.send("This file doesn't exist, try again!");
+    }
+    
+}
