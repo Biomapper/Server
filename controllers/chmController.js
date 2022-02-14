@@ -12,9 +12,12 @@ exports.index = function(req, res) {
 exports.retrieve_CHM = function(req, res) {
 
     //TODO: Implement the code that will retrieve a modified tile
-    // need in this format /<dataType>/<zoom>/<x>/<y>.png
-    //
-    //let test = path.join(__dirname, "..", "test.txt"); //THis is a reference for formatting keep for now
+    // need in this format /<dataType>/<zoom>/<x>/<y>.png 
+
+    //let test = path.join(__dirname, "..", "test.txt"); //This is a reference for formatting keep for now
+
+    //TODO: Implement color-filtering code
+    
 
       /*
      this code just sends a png depending on zoom, x coor, and y coor. This assumes we are in the CHM directory
