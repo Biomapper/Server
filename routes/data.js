@@ -32,6 +32,6 @@ router.get('/ABG/:data', ABG_controller.retrieve_ABG);
 router.get('/DEM', DEM_controller.index);
 
 // GET DEM data (depends on HTTP parameters)
-router.get('/DEM/:data', DEM_controller.retrieveDEM);
+router.get('/DEM/:zoom/:x/:y', DEM_controller.retrieve_DEM);
 
 module.exports = router;
