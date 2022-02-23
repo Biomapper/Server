@@ -1,13 +1,25 @@
+const fs = require("fs"); // needed to work with file system
+const path = require("path");
+
 exports.index = function(req,res) {
-    // TODO: update later when we have this data
-    // but make this a 'Bad Request' since it won't be 
-    // a valid HTTP request
-    res.send("NOT IMPLEMENTED: Still need DEM data");
+    // TODO: Implement EMS - Add a more specfic error
+    // such as what exactly is missing in the request
+    res.status(400).send("Invalid request for DEM data. \
+        Please give more information.");
 };
 
 exports.retrieveDEM = function(req, res) {
-    // TODO: update later when we have this data
-    // THis will be used to parse the request
-    // to get the right DEM tile
-    res.send("NOT IMPLEMENTED: Still need DEM data to do processing");
-};
+    // TODO: Implement color-filtering code
+    
+    // TODO: format for the server
+    let parentdir = "../../data";
+    let tile = path.join(__dirname,parentdir,"DEM",`${req.params.zoom}`,
+               `${req.params.x}`,`${req.params.y}.png`);
+    console.log(tile);
+    // check to see if file exists
+    if (fs.existsSync(tile)) {
+        res.sendFile(tile);
+    } else {
+        res.send("This file doesn't exist, try again!");
+    }
+}
