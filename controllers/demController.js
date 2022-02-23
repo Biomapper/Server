@@ -8,7 +8,7 @@ exports.index = function(req,res) {
         Please give more information.");
 };
 
-exports.retrieveDEM = function(req, res) {
+exports.retrieve_DEM = function(req, res) {
     // TODO: Implement color-filtering code
     
     // TODO: format for the server
