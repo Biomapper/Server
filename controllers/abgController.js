@@ -1,3 +1,6 @@
+const fs = require("fs");// needed to work with the file system
+const path = require("path");
+
 exports.index = function(req, res) {
     // TODO: update later when we have this data
     // but make this a 'Bad Request' since it won't be
