@@ -4,7 +4,7 @@ const path = require("path");
 exports.index = function(req, res) {
     //TODO: Implement EMS - Add a more specific error
     // such as what exactly is missing in the request
-    res.status(400).send("Invalid request for CHM data. \
+    res.status(404).send("Invalid request for CHM data. \
         Please use format <IP>:3000/dataType/zoom/x_coor/y_coor");
 }
 
@@ -28,13 +28,14 @@ exports.retrieve_CHM = function(req, res) {
     const parentdir = "../../data";
     let tile = path.join(__dirname, parentdir, "CHM", `${req.params.zoom}`,
                 `${req.params.x}`,`${req.params.y}.png`);
-    const error = path.join(__dirname,"..","EMS","error.html");
     console.log(tile); //TODO: delate late
     // check to see if file exists
     if (fs.existsSync(tile)) {
         res.sendFile(tile);
     } else {
-        res.sendFile(error);
+        res.status(404).send("<title>404 Not Found</title> \
+           <h1>Not Found</h1> \
+           <p>The requested tile was not found on this server.</p>");
     }
     
 }
