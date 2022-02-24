@@ -15,12 +15,13 @@ exports.retrieve_DEM = function(req, res) {
     const parentdir = "../../data";
     let tile = path.join(__dirname,parentdir,"DEM",`${req.params.zoom}`,
                `${req.params.x}`,`${req.params.y}.png`);
-    const error = psth.join(__dirname,"..","EMS","")
     console.log(tile); //TODO: delete later
     // check to see if file exists
     if (fs.existsSync(tile)) {
         res.sendFile(tile);
     } else {
-        res.send("This file doesn't exist, try again!");
+        res.status(404).send("<title>404 Not Found</title> \
+            <h1>Not Found</h1> \
+            <p>The requested title was not found on this server.</p>");
     }
 }
