@@ -5,7 +5,7 @@ exports.index = function(req, res) {
     //TODO: Implement EMS - Add a more specific error
     // such as what exactly is missing in the request
     res.status(400).send("Invalid request for CHM data. \
-        Please give more information.");
+        Please use format <IP>:3000/dataType/zoom/x_coor/y_coor");
 }
 
 exports.retrieve_CHM = function(req, res) {
@@ -23,18 +23,18 @@ exports.retrieve_CHM = function(req, res) {
      this code just sends a png depending on zoom, x coor, and y coor. 
      This assumes we are in the CHM directory
      will need to be updated for modified tiles
-     TODO: Come later this will need to be reformatted to fit 
-     the file structure that will be on the server
+     TODO: Format for the server
      */
-    let parentdir = "../../data";
+    const parentdir = "../../data";
     let tile = path.join(__dirname, parentdir, "CHM", `${req.params.zoom}`,
                 `${req.params.x}`,`${req.params.y}.png`);
-    console.log(tile);
+    const error = path.join(__dirname,"..","EMS","error.html");
+    console.log(tile); //TODO: delate late
     // check to see if file exists
     if (fs.existsSync(tile)) {
         res.sendFile(tile);
     } else {
-        res.send("This file doesn't exist, try again!");
+        res.sendFile(error);
     }
     
 }

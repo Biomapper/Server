@@ -22,7 +22,7 @@ router.get("/CHM/:zoom/:x/:y", CHM_controller.retrieve_CHM);
 router.get('/ABG', ABG_controller.index);
 
 // GET ABG data (depends on HTTP parameters)
-router.get('/ABG/:data', ABG_controller.retrieve_ABG);
+router.get('/ABG/:zoom/:x/:y', ABG_controller.retrieve_ABG);
 
 
 
