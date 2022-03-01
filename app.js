@@ -7,7 +7,7 @@ const homeRouter = require('./routes/index');
 const dataRouter = require('./routes/data');
 
 app.use('/', homeRouter);
-app.use('/data', dataRouter);
+app.use('/base-tiles', dataRouter);
 
 // running the server
 app.listen(port, (err) => {
