@@ -13,7 +13,7 @@ router.get('/CHM', CHM_controller.index);
 
 // GET CHM data (depends on HTTP parameters)
 //router.get('/CHM/:zoom/:x/:y', CHM_controller.retrieve_CHM);
-router.get("/CHM/:zoom/:x/:y", CHM_controller.retrieve_CHM);
+router.get("/CHM/:zoom/:x/:y/:min/:max", CHM_controller.retrieve_CHM);
 
 
 // ABG Routes ///
@@ -32,6 +32,6 @@ router.get('/ABG/:zoom/:x/:y', ABG_controller.retrieve_ABG);
 router.get('/DEM', DEM_controller.index);
 
 // GET DEM data (depends on HTTP parameters)
-router.get('/DEM/:zoom/:x/:y', DEM_controller.retrieve_DEM);
+router.get('/DEM/:zoom/:x/:y/:min/:max', DEM_controller.retrieve_DEM);
 
 module.exports = router;
