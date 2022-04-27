@@ -13,8 +13,8 @@ exports.retrieve_DEM = function (req, res) {
     // TODO: Implement color-filtering code
 
     // TODO: format for the server
-    const parentdir = "../../data";
-    let tile = path.join(__dirname, parentdir, "DEM", `${req.params.zoom}`,
+    const parentdir = "/var/www/html/map-tiles/";
+    let tile = path.join(parentdir, "dem", `${req.params.zoom}`,
         `${req.params.x}`, `${req.params.y}.png`);
 
     // check to see if file exists
@@ -34,11 +34,15 @@ exports.retrieve_DEM = function (req, res) {
         });
 
         pythonScript.on('exit', () => {
-            res.sendFile(path.join(__dirname, '..', 'filtered.png'));
+            res.sendFile(path.join(__dirname, '../filteredTiles/', `${req.params.zoom}_${req.params.x}_${req.params.y}filtered.png`));
         })
     } else {
         res.status(404).send("<title>404 Not Found</title> \
             <h1>Not Found</h1> \
             <p>The requested title was not found on this server.</p>");
     }
+   fs.unlink(path.join(__dirname, '../filteredTiles/', `${req.params.zoom}_${req.params.x}_${req.params.y}filtered.png`), function(err){
+      if(err) return;
+   });
+
 }

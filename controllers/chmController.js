@@ -3,30 +3,18 @@ const path = require("path");
 const { spawn } = require("child_process");
 
 exports.index = function (req, res) {
-    //TODO: Implement EMS - Add a more specific error
+    // TODO: Implement EMS - Add a more specfic error
     // such as what exactly is missing in the request
-    res.status(404).send("Invalid request for CHM data. \
-        Please use format <IP>:3000/dataType/zoom/x_coor/y_coor/min/max");
-}
+    res.status(400).send("Invalid request for CHM data. \
+         Please use format <IP>:3000/dataType/zoom/x_coor/y_coor/min/max");
+};
 
 exports.retrieve_CHM = function (req, res) {
+    // TODO: Implement color-filtering code
 
-    //TODO: Implement the code that will retrieve a modified tile
-    // need in this format /<dataType>/<zoom>/<x>/<y>.png 
-
-    //let test = path.join(__dirname, "..", "test.txt"); //This is a reference for 
-    // formatting keep for now
-
-    /*
-   this code just sends a png depending on zoom, x coor, and y coor. 
-   This assumes we are in the CHM directory
-   will need to be updated for modified tiles
-   */
-    //console.log(req.params.min);
-    //console.log(req.params.max);
-
-    const parentdir = "../../data";
-    let tile = path.join(__dirname, parentdir, "CHM", `${req.params.zoom}`,
+    // TODO: format for the server
+    const parentdir = "/var/www/html/map-tiles/";
+    let tile = path.join(parentdir, "chm", `${req.params.zoom}`,
         `${req.params.x}`, `${req.params.y}.png`);
 
     // check to see if file exists
@@ -46,13 +34,24 @@ exports.retrieve_CHM = function (req, res) {
         });
 
         pythonScript.on('exit', () => {
-            res.sendFile(path.join(__dirname, '..', 'filtered.png'));
+            res.sendFile(path.join(__dirname, '../filteredTiles/', `${req.params.zoom}_${req.params.x}_${req.params.y}filtered.png`));
         })
     } else {
         res.status(404).send("<title>404 Not Found</title> \
-           <h1>Not Found</h1> \
-           <p>The requested tile was not found on this server.</p>");
+            <h1>Not Found</h1> \
+            <p>The requested title was not found on this server.</p>");
     }
+   fs.unlink(path.join(__dirname, '../filteredTiles/', `${req.params.zoom}_${req.params.x}_${req.params.y}filtered.png`), function(err){
+      if(err) return;
+      console.log('file deleted');
+   });
+}
 
-
+function sleep(milliseconds) {
+   var start = new Date().getTime();
+   for (var i = 0; i < 10000; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+         break;
+      }
+   }
 }

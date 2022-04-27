@@ -76,7 +76,6 @@ def main():
 
 if __name__ == '__main__':
     main()
-    time.sleep(0.2)
 
 # Just a fun test to see how fast it iterates over data.
     # directory = '/Users/brandonwarmam/Documents/School/CS486/Server/CHM/'
