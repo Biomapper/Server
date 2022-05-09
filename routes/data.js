@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Require controller modules.
 const DEM_controller = require("../controllers/demController");
-const ABG_controller = require("../controllers/abgController");
+const AGB_controller = require("../controllers/agbController");
 const CHM_controller = require("../controllers/chmController");
 
 /// CHM Routes ///
@@ -16,13 +16,13 @@ router.get('/CHM', CHM_controller.index);
 router.get("/CHM/:zoom/:x/:y/:min/:max", CHM_controller.retrieve_CHM);
 
 
-// ABG Routes ///
+// AGB Routes ///
 
-// GET index page for ABG (this essentially sends an error)
-router.get('/ABG', ABG_controller.index);
+// GET index page for AGB (this essentially sends an error)
+router.get('/AGB', AGB_controller.index);
 
-// GET ABG data (depends on HTTP parameters)
-router.get('/ABG/:zoom/:x/:y', ABG_controller.retrieve_ABG);
+// GET AGB data (depends on HTTP parameters)
+router.get('/AGB/:zoom/:x/:y/:min/:max', AGB_controller.retrieve_AGB);
 
 
 
